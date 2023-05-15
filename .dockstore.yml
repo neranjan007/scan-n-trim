@@ -1,6 +1,6 @@
 version: 1.2
 workflows:
- - name: scan-n-trim
+ - name: Scan-n-Trim
    subclass: WDL
    primaryDescriptorPath: /workflows/wf_peTriming.wdl
    testParameterFiles:
