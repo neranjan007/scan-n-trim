@@ -1,0 +1,4 @@
+{
+  "peTrimming_workflow.R1": "/mnt/dm-3/pereran/workflows/wdl/data/wm_training_202205/sample01_R1.fastq.gz",
+  "peTrimming_workflow.R2": "/mnt/dm-3/pereran/workflows/wdl/data/wm_training_202205/sample01_R2.fastq.gz"
+}

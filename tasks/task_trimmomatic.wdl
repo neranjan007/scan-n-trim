@@ -17,8 +17,8 @@ task trimmomatic_task{
         Int required_quality = 20
     }
 
-    String samplename_r1 = basename(r1, '.fastq')
-    String samplename_r2 = basename(r2, '.fastq')
+    String samplename_r1 = basename(r1, '.fastq.gz')
+    String samplename_r2 = basename(r2, '.fastq.gz')
 
     command <<<
         echo "~{r1}"
@@ -27,8 +27,8 @@ task trimmomatic_task{
         trimmomatic PE \
         -threads ~{cpu} \
         "~{r1}" "~{r2}" \
-        "~{samplename_r1}_paired.fastq" "~{samplename_r1}_unpaired.fastq" \
-        "~{samplename_r2}_paired.fastq" "~{samplename_r2}_unpaired.fastq" \
+        "~{samplename_r1}_paired.fastq.gz" "~{samplename_r1}_unpaired.fastq.gz" \
+        "~{samplename_r2}_paired.fastq.gz" "~{samplename_r2}_unpaired.fastq.gz" \
         ILLUMINACLIP:/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:20:10:8:TRUE \
         SLIDINGWINDOW:~{window_size}:~{required_quality} MINLEN:~{minlen}
         cat stderr
@@ -38,8 +38,8 @@ task trimmomatic_task{
         # task outputs
         #File r1_paired = "r1_paired.fastq"
         #File r2_paired = "r2_paired.fastq"
-        File r1_paired = "~{samplename_r1}_paired.fastq"
-        File r2_paired = "~{samplename_r2}_paired.fastq"
+        File r1_paired = "~{samplename_r1}_paired.fastq.gz"
+        File r2_paired = "~{samplename_r2}_paired.fastq.gz"
     }
 
     runtime{

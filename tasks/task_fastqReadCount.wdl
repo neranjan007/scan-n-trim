@@ -2,7 +2,7 @@ version 1.0
 
 task fastqReadCount_task{
 	meta {
-		description: "Read the number of reads in a fastq file"
+		description: "Read the number of reads in a fastq file gz ziped"
 	}
 
 	input{
@@ -15,8 +15,8 @@ task fastqReadCount_task{
 	}
 
 	command <<<
-		cat ~{read1} | fastq-scan | jq .qc_stats.read_total > TOTAL_R1_READS
-		cat ~{read2} | fastq-scan | jq .qc_stats.read_total > TOTAL_R2_READS
+		zcat ~{read1} | fastq-scan | jq .qc_stats.read_total > TOTAL_R1_READS
+		zcat ~{read2} | fastq-scan | jq .qc_stats.read_total > TOTAL_R2_READS
 		cat TOTAL_R1_READS
 		cat TOTAL_R2_READS
 	>>>
